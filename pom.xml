@@ -9,8 +9,7 @@
     <version>2.2.0</version>
 
     <name>ruoyi</name>
-    <url>http://www.ruoyi.vip</url>
-    <description>若依微服务系统</description>
+    <description>微服务系统</description>
 
     <properties>
         <ruoyi.version>2.2.0</ruoyi.version>
@@ -55,6 +54,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
 
             <!-- SpringBoot 依赖配置 -->
             <dependency>

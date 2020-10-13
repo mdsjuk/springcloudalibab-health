@@ -21,7 +21,7 @@ import reactor.core.publisher.Mono;
 
 /**
  * 验证码过滤器
- * 
+ * 检查验证码是否正确
  * @author ruoyi
  */
 @Component

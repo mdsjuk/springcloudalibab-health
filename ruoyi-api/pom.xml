@@ -10,6 +10,7 @@
 
     <modules>
         <module>ruoyi-api-system</module>
+        <module>dubbo-api</module>
     </modules>
 
     <artifactId>ruoyi-api</artifactId>

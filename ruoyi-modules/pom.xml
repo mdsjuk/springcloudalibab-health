@@ -12,6 +12,8 @@
         <module>ruoyi-system</module>
         <module>ruoyi-gen</module>
         <module>ruoyi-job</module>
+        <module>spring-cloud-alibaba-dubbo-consumer</module>
+        <module>spring-cloud-alibaba-dubbo-provider</module>
     </modules>
 
     <artifactId>ruoyi-modules</artifactId>
@@ -20,5 +22,8 @@
     <description>
         ruoyi-modules业务模块
     </description>
+    <dependencies>
+
+    </dependencies>
 
 </project>

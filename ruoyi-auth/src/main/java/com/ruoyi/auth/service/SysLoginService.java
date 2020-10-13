@@ -14,6 +14,8 @@ import com.ruoyi.system.api.RemoteUserService;
 import com.ruoyi.system.api.domain.SysUser;
 import com.ruoyi.system.api.model.LoginUser;
 
+import javax.annotation.Resource;
+
 /**
  * 登录校验方法
  * 
@@ -22,7 +24,7 @@ import com.ruoyi.system.api.model.LoginUser;
 @Component
 public class SysLoginService
 {
-    @Autowired
+    @Resource
     private RemoteLogService remoteLogService;
 
     @Autowired

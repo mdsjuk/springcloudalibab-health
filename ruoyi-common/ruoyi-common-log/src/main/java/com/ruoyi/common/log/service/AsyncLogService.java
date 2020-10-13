@@ -1,10 +1,11 @@
 package com.ruoyi.common.log.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import com.ruoyi.system.api.RemoteLogService;
 import com.ruoyi.system.api.domain.SysOperLog;
+
+import javax.annotation.Resource;
 
 /**
  * 异步调用日志服务
@@ -14,7 +15,7 @@ import com.ruoyi.system.api.domain.SysOperLog;
 @Service
 public class AsyncLogService
 {
-    @Autowired
+    @Resource
     private RemoteLogService remoteLogService;
 
     /**
