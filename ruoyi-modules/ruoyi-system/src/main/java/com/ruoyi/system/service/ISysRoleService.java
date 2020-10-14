@@ -22,11 +22,13 @@ public interface ISysRoleService
 
     /**
      * 根据用户ID查询角色
-     * 
+     *
      * @param userId 用户ID
      * @return 权限列表
      */
-    public Set<String> selectRolePermissionByUserId(Long userId);
+    public default Set<String> selectRolePermissionByUserId(Long userId) {
+        return null;
+    }
 
     /**
      * 查询所有角色

@@ -107,6 +107,7 @@ public class PreAuthorizeAspect
      */
     public boolean hasPermi(String permission)
     {
+        /*通过请求token获取用户信息*/
         LoginUser userInfo = tokenService.getLoginUser();
         if (StringUtils.isEmpty(userInfo) || CollectionUtils.isEmpty(userInfo.getPermissions()))
         {

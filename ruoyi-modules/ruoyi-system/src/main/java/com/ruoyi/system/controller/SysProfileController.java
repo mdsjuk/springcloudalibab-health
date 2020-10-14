@@ -1,11 +1,9 @@
 package com.ruoyi.system.controller;
 
+import com.ruoyi.common.core.utils.ServletUtils;
+import com.ruoyi.common.core.utils.file.FileUploadUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.core.web.controller.BaseController;
 import com.ruoyi.common.core.web.domain.AjaxResult;
 import com.ruoyi.common.log.annotation.Log;
@@ -15,6 +13,9 @@ import com.ruoyi.common.security.utils.SecurityUtils;
 import com.ruoyi.system.api.domain.SysUser;
 import com.ruoyi.system.api.model.LoginUser;
 import com.ruoyi.system.service.ISysUserService;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 /**
  * 个人信息 业务处理
@@ -41,7 +42,7 @@ public class SysProfileController extends BaseController
         SysUser user = userService.selectUserByUserName(username);
         AjaxResult ajax = AjaxResult.success(user);
         ajax.put("roleGroup", userService.selectUserRoleGroup(username));
-        ajax.put("postGroup", userService.selectUserPostGroup(username));
+//        ajax.put("postGroup", userService.selectUserPostGroup(username));
         return ajax;
     }
 
@@ -94,4 +95,28 @@ public class SysProfileController extends BaseController
         }
         return AjaxResult.error("修改密码异常，请联系管理员");
     }
+    /**
+     * 头像上传
+     */
+    @Log(title = "用户头像", businessType = BusinessType.UPDATE)
+    @PostMapping("/avatar")
+    public AjaxResult avatar(@RequestParam("avatarfile") MultipartFile file) throws IOException
+    {
+        if (!file.isEmpty())
+        {
+            LoginUser loginUser = tokenService.getLoginUser(ServletUtils.getRequest());
+            String avatar = FileUploadUtils.upload(FileUploadUtils.DEFAULT_UPLOAD_DIR+"/avatar", file);
+            if (userService.updateUserAvatar(loginUser.getUsername(), avatar))
+            {
+                AjaxResult ajax = AjaxResult.success();
+                ajax.put("imgUrl", avatar);
+                // 更新缓存用户头像
+                loginUser.getSysUser().setAvatar(avatar);
+                tokenService.setLoginUser(loginUser);
+                return ajax;
+            }
+        }
+        return AjaxResult.error("上传图片异常，请联系管理员");
+    }
+
 }

@@ -18,19 +18,11 @@ spring:
         min-idle: 0
   datasource:
     druid:
-      db1:
-        type: com.alibaba.druid.pool.DruidDataSource
-        username: root
-        password: 740616
-        url: jdbc:mysql://127.0.0.1:3306/springboot
-        driver-class-name: com.mysql.jdbc.Driver
-        filters: stat,wall
-      db2:
-        type: com.alibaba.druid.pool.DruidDataSource
-        username: root
-        password: 740616
-        url: jdbc:mysql://127.0.0.1:3306/springboot
-        driver-class-name: com.mysql.jdbc.Driver
-        filters: stat,wall
+      type: com.alibaba.druid.pool.DruidDataSource
+      username: root
+      password: 740616
+      url: jdbc:mysql://127.0.0.1:3306/springboot
+      driver-class-name: com.mysql.jdbc.Driver
+      filters: stat,wall
 
 
